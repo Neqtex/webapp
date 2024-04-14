@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Website Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <link rel="stylesheet" href="css/tooplate-style.css">
+</head>
+
+<body>
+<div id="tm-bg"></div>
+<div id="tm-wrap">
+    <div class="tm-main-content">
+        <div class="container tm-site-header-container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tm-site-header">
+                        <h1 class="mb-4">Website Form</h1>
+                        <img src="img/underline.png" class="img-fluid mb-4">
+                        <p>Please fill out the form below.</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="content">
+                        <div class="grid">
+                            <div class="grid__item" id="website-form-link">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fas fa-file-alt fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">Website Form</span>
+                                        <div class="product__bg"></div>
+                                    </div>
+                                    <div class="product__description">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <form action="submit-form.html" method="post" class="website-form">
+                                                    <div class="form-group">
+                                                        <label for="client-name">Name:</label>
+                                                        <input type="text" id="client-name" name="client-name"
+                                                               class="form-control" placeholder="Client Name" required/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="client-email">Email:</label>
+                                                        <input type="email" id="client-email" name="client-email"
+                                                               class="form-control" placeholder="Client Email"
+                                                               required/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-type">Business Type:</label>
+                                                        <select id="website-type" name="website-type" class="form-control" required>
+                                                            <option value="">Select</option>
+                                                            <option value="business">Business</option>
+                                                            <option value="personal">Personal</option>
+                                                            <option value="ecommerce">E-commerce</option>
+                                                            <option value="blog">Blog</option>
+                                                            <option value="other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-description">Website Description:</label>
+                                                        <textarea id="website-description" name="website-description"
+                                                                  class="form-control" rows="3"
+                                                                  placeholder="Website Description" required></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-audience">Target Audience:</label>
+                                                        <input type="text" id="website-audience" name="website-audience"
+                                                               class="form-control" placeholder="Target Audience"
+                                                               required/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-goals">Website Goals:</label>
+                                                        <textarea id="website-goals" name="website-goals"
+                                                                  class="form-control" rows="3"
+                                                                  placeholder="Website Goals" required></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-features">Desired Features:</label>
+                                                        <textarea id="website-features" name="website-features"
+                                                                  class="form-control" rows="3"
+                                                                  placeholder="Desired Features" required></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="website-budget">Budget:</label>
+                                                        <input type="number" id="website-budget" name="website-budget"
+                                                               class="form-control" placeholder="Budget" required/>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary tm-btn-submit">Submit
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <a href="dashboard.html"><span class="fas fa-arrow-left fa-3x tm-nav-icon"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+<!--                            <div class="grid__item" id="new-dashboard-link">-->
+<!--                                <div class="product">-->
+<!--                                    <div class="tm-nav-link">-->
+<!--                                        <a href="dashboard.html"><span class="fas fa-arrow-left fa-3x tm-nav-icon"></span></a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p class="small tm-copyright-text">Copyright &copy; <span class="tm-current-year">2020</span> Neqtex LLC</p>
+        </footer>
+    </div>
+</div>
+
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="slick/slick.min.js"></script>
+<script src="js/anime.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    function setupFooter() {
+        var pageHeight = $('.tm-site-header-container').height() + $('footer').height() + 100;
+        var main = $('.tm-main-content');
+        if ($(window).height() < pageHeight) {
+            main.addClass('tm-footer-relative');
+        } else {
+            main.removeClass('tm-footer-relative');
+        }
+    }
+
+    $(function () {
+        setupFooter();
+        $(window).resize(function () {
+            setupFooter();
+        });
+        $('.tm-current-year').text(new Date().getFullYear());
+    });
+</script>
+</body>
+</html>
