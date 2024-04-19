@@ -46,6 +46,7 @@
                         <p>
                             Welcome to Neqtex - your premier destination for comprehensive digital solutions.
                         </p>
+                        <img src="img/neqtex_logo.svg" alt="Neqtex Logo" width="400" height="400">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -114,19 +115,22 @@
                                                 <form action="login.html" method="post" class="login-form">
                                                     <div class="form-group">
                                                         <label for="username">Key</label>
-                                                        <input type="text" id="client-key" name="client-key" class="form-control" placeholder="Enter your client key" required/>
+                                                        <input type="text" id="client-key" name="client-key"
+                                                               class="form-control" placeholder="Enter your client key"
+                                                               required/>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary tm-btn-submit">submit</button>
+                                                    <button type="submit" class="btn btn-primary tm-btn-submit">submit
+                                                    </button>
                                                 </form>
 
 
-<!--                                                <p>Pay with Paypal</p>-->
-<!--                                                <a href="https://www.paypal.com"> <img-->
-<!--                                                        src="img/d5d04c809b120c79f6148ed4f68034f4.jpg"-->
-<!--                                                        height="200" width="200"/></a>-->
+                                                <!--                                                <p>Pay with Paypal</p>-->
+                                                <!--                                                <a href="https://www.paypal.com"> <img-->
+                                                <!--                                                        src="img/d5d04c809b120c79f6148ed4f68034f4.jpg"-->
+                                                <!--                                                        height="200" width="200"/></a>-->
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-<!--                                                <p>Direct Payments</p>-->
+                                                <!--                                                <p>Direct Payments</p>-->
                                                 <a href="https://www.paypal.com"> <img src="img/nireeka.jpg"
                                                                                        height="250" width="250"/></a>
                                             </div>
@@ -316,33 +320,19 @@
                                     <div class="product__description">
                                         <div class="row mb-3">
                                             <div class="col-12">
-                                                <h2 class="tm-page-title">Login</h2>
+                                                <h2 class="tm-page-title">Sign Up | Login</h2>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <form action="./pages/dashboard.html" method="get" class="login-form">
-                                                    <div class="form-group">
-                                                        <label for="username">Username:</label>
-                                                        <input type="text" id="username" name="username"
-                                                               class="form-control" placeholder="Username" required/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="password">Password:</label>
-                                                        <input type="password" id="password" name="password"
-                                                               class="form-control" placeholder="Password" required/>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary tm-btn-submit">Login
-                                                    </button>
-                                                    <br>
-                                                </form>
+                                                <!-- Removed the form and added two buttons -->
+                                                <button onclick="window.location.href='pages/signup.html'"
+                                                        class="btn btn-primary tm-btn-submit">Sign Up
+                                                </button>
+                                                <button onclick="window.location.href='pages/login.html'"
+                                                        class="btn btn-primary tm-btn-submit">Login
+                                                </button>
                                             </div>
-                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <a href="forgot.html" class="btn btn-link">Forgot Username &
-                                                    Password?</a>
-                                                <a href="signup.html" class="btn btn-link">Sign Up</a>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +380,24 @@
         $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
     });
 
-</script>
+    function validateLogin(event) {
+        // event.preventDefault(); // Prevent form submission
 
+        var username = document.getElementById('username').value.toLowerCase();
+        var password = document.getElementById('password').value;
+
+        if (username === 'chike' && password === 'okonta') {
+            // Redirect to dashboard
+            window.location.href = './pages/dashboard.html';
+        } else {
+            // Display access denied message
+            alert('Access denied');
+        }
+    }
+
+</script>
+<!--<script>-->
+
+<!--</script>-->
 </body>
 </html>
