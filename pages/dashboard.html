@@ -90,6 +90,19 @@
             setupFooter();
         });
         $('.tm-current-year').text(new Date().getFullYear());
+        // Retrieve the username from localStorage
+        var username = localStorage.getItem('username');
+
+        // Select the paragraph element containing the welcome message
+        var welcomeMessage = document.querySelector('.tm-site-header p');
+
+        // Update the text content of the welcome message
+        if (username)
+            welcomeMessage.textContent = 'Hello ' + username ;
+
+        document.getElementById('logout-link').addEventListener('click', function() {
+            localStorage.clear();
+        });
     });
 </script>
 </body>

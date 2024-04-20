@@ -386,10 +386,11 @@
         var username = document.getElementById('username').value.toLowerCase();
         var password = document.getElementById('password').value;
 
-        if (username === 'chike' && password === 'okonta') {
+        if ((username === 'chike' && password === 'okonta') ||  (username === 'thirtystudios' && password === 'thirtystudios')) {
             // Redirect to dashboard
             window.location.href = './pages/dashboard.html';
-        } else {
+        }
+        else {
             // Display access denied message
             alert('Access denied');
         }

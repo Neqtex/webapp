@@ -54,11 +54,17 @@
             var username = document.getElementById('username').value.toLowerCase();
             var password = document.getElementById('password').value;
 
-            if (username === 'chike' && password === 'okonta') {
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Access denied');
-            }
+            fetch(`https://enterprise-service-aaee0207ddcf.herokuapp.com:443/login/credential/${username}/${password}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.person_username.trim() === username && data.person_token) {
+                        localStorage.setItem('username', data.person_username.trim());
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        alert('Access denied');
+                    }
+                })
+                .catch(error => alert('Access denied'));
         });
     </script>
 </body>
