@@ -380,22 +380,6 @@
         $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
     });
 
-    function validateLogin(event) {
-        // event.preventDefault(); // Prevent form submission
-
-        var username = document.getElementById('username').value.toLowerCase();
-        var password = document.getElementById('password').value;
-
-        if ((username === 'chike' && password === 'okonta') ||  (username === 'thirtystudios' && password === 'thirtystudios')) {
-            // Redirect to dashboard
-            window.location.href = './pages/dashboard.html';
-        }
-        else {
-            // Display access denied message
-            alert('Access denied');
-        }
-    }
-
 </script>
 <!--<script>-->
 

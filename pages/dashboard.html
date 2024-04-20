@@ -48,6 +48,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="grid__item" id="continue-project-link" style="display: none;">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fas fa-arrow-alt-circle-right fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">Continue Project</span>
+                                    </div>
+                                </div>
+                            </div>
                             <a href="../index.html">
                                 <div class="grid__item" id="logout-link">
                                     <div class="product">
@@ -98,11 +106,18 @@
 
         // Update the text content of the welcome message
         if (username)
-            welcomeMessage.textContent = 'Hello ' + username ;
+            welcomeMessage.textContent = 'Hello ' + username;
 
-        document.getElementById('logout-link').addEventListener('click', function() {
+        document.getElementById('logout-link').addEventListener('click', function () {
             localStorage.clear();
         });
+
+        if (localStorage.getItem('continue_project') === 'true') {
+            document.getElementById('continue-project-link').style.display = 'block';
+            document.getElementById('continue-project-link').addEventListener('click', function () {
+                window.location.href = 'continue_project.html';
+            });
+        }
     });
 </script>
 </body>
