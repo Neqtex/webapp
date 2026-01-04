@@ -1,0 +1,8 @@
+# Robots.txt for Neqtex
+# https://neqtex.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://neqtex.com/sitemap.xml
