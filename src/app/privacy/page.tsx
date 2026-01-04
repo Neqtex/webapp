@@ -1,8 +1,13 @@
 import Link from 'next/link';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neqtex.com';
+
 export const metadata = {
   title: 'Privacy Policy | Neqtex',
   description: 'Neqtex Privacy Policy - How we collect, use, and protect your information.',
+  alternates: {
+    canonical: `${siteUrl}/privacy`,
+  },
 };
 
 export default function PrivacyPolicy() {

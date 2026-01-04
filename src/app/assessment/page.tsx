@@ -18,6 +18,9 @@ import {
 
 const CALENDLY_URL = 'https://calendly.com/neqtexdev1/30min';
 
+// Note: Move metadata to a separate layout.tsx or use generateMetadata for this page
+// For now, metadata is handled by the root layout
+
 export default function AssessmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 

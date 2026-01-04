@@ -1,8 +1,13 @@
 import Link from 'next/link';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neqtex.com';
+
 export const metadata = {
   title: 'Terms of Service | Neqtex',
   description: 'Neqtex Terms of Service - Terms and conditions for using our services.',
+  alternates: {
+    canonical: `${siteUrl}/terms`,
+  },
 };
 
 export default function TermsOfService() {

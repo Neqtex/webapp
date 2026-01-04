@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   creator: "Neqtex LLC",
   publisher: "Neqtex LLC",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://neqtex.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -51,6 +54,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://neqtex.com';
+  
   return (
     <html lang="en">
       <head>
@@ -58,6 +63,52 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+        
+        {/* JSON-LD Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': `${siteUrl}/#organization`,
+                  name: 'Neqtex',
+                  url: siteUrl,
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: `${siteUrl}/neqtex_logo.svg`,
+                  },
+                  description: 'Operational Offload & Cost Relief for small teams who are tired of paying for work they shouldn\'t be doing.',
+                  sameAs: [],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': `${siteUrl}/#website`,
+                  url: siteUrl,
+                  name: 'Neqtex',
+                  publisher: {
+                    '@id': `${siteUrl}/#organization`,
+                  },
+                },
+                {
+                  '@type': 'WebPage',
+                  '@id': `${siteUrl}/#webpage`,
+                  url: siteUrl,
+                  name: 'Neqtex | Operational Offload & Cost Relief',
+                  isPartOf: {
+                    '@id': `${siteUrl}/#website`,
+                  },
+                  about: {
+                    '@id': `${siteUrl}/#organization`,
+                  },
+                  description: 'We help small teams stop paying for work they shouldn\'t be doing. Free operational offload assessment for accounting firms, property managers, medical clinics, and operations-heavy SMBs.',
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         <GoogleAnalytics />
