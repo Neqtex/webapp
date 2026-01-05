@@ -542,7 +542,7 @@ function ContactPanel() {
           <div className="space-y-4 text-[#a9a9a9]">
             <p>
               <strong className="text-white">Email:</strong><br />
-              hello@neqtex.com
+              info@neqtex.com
             </p>
             <p>
               <strong className="text-white">Phone:</strong><br />

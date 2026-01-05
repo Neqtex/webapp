@@ -105,8 +105,8 @@ export default function TermsOfService() {
               <h2 className="text-2xl mb-4">9. Contact</h2>
               <p className="text-[#a9a9a9]">
                 For questions about these Terms of Service, please contact us at{' '}
-                <a href="mailto:hello@neqtex.com" className="text-[#006599] hover:text-[#0e7fb9]">
-                  hello@neqtex.com
+                <a href="mailto:info@neqtex.com" className="text-[#006599] hover:text-[#0e7fb9]">
+                  info@neqtex.com
                 </a>
               </p>
             </section>

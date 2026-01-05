@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: 'Neqtex Contact Form <onboarding@resend.dev>',
-      to: [process.env.CONTACT_EMAIL || 'hello@neqtex.com'],
+      to: [process.env.CONTACT_EMAIL || 'info@neqtex.com'],
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
