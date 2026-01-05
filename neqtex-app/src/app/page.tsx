@@ -402,10 +402,6 @@ function ContactPanel() {
               info@neqtex.com
             </p>
             <p>
-              <strong className="text-white">Phone:</strong><br />
-              (555) 123-4567
-            </p>
-            <p>
               <strong className="text-white">Location:</strong><br />
               Remote-First Company
             </p>
