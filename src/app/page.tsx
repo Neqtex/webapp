@@ -95,7 +95,7 @@ export default function HomePage() {
 
       {/* Main Content - Hidden when modal is active */}
       <div className={`flex items-center min-h-screen transition-opacity duration-300 ${activePanel ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <div className="flex items-center w-full px-4 py-12 md:px-8 lg:px-16">
+        <div className="flex items-center w-full px-4 py-12 pb-24 md:px-8 lg:px-16">
           <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl mx-auto gap-8 lg:gap-16">
             
             {/* Left Side - Branding */}
