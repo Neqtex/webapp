@@ -75,7 +75,7 @@ export default function AssessmentPage() {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
         style={{ backgroundImage: 'url("/hero.jpg")' }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
@@ -271,6 +271,7 @@ export default function AssessmentPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-white/50">
               <p>Copyright © 2026 Neqtex LLC</p>
               <div className="flex gap-4">
+                <Link href="/about" className="hover:text-[#006599] transition-colors">About Us</Link>
                 <Link href="/privacy" className="hover:text-[#006599] transition-colors">Privacy Policy</Link>
                 <Link href="/terms" className="hover:text-[#006599] transition-colors">Terms of Service</Link>
               </div>

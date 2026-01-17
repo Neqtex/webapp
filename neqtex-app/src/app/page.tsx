@@ -67,7 +67,7 @@ export default function HomePage() {
           backgroundImage: 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")',
         }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Main Content */}
@@ -82,7 +82,7 @@ export default function HomePage() {
                 <div className="w-8 h-2 bg-white ml-auto -mt-0.5" />
               </div>
               <p className="text-lg opacity-90 mb-8">
-                Operational Offload & Cost Relief for small teams who are tired of paying for work they shouldn't be doing.
+                Operational Offload & Cost Relief for accounting and legal teams tired of paying for work they shouldn't be doing.
               </p>
               
               {/* Logo Box */}
@@ -171,10 +171,10 @@ function WelcomePanel() {
       <div className="grid md:grid-cols-2 gap-8">
         <div>
           <p className="mb-4">
-            We help small teams <strong>stop paying for work they shouldn't be doing</strong>.
+            We help accounting and legal teams <strong>stop paying for work they shouldn't be doing</strong>.
           </p>
           <p className="mb-4">
-            Most small businesses are drowning in operational overhead — repetitive tasks, manual processes, 
+            Most professional services firms are drowning in operational overhead — repetitive tasks, manual processes, 
             and inefficiencies that drain time and money. We're here to change that.
           </p>
           <p>
@@ -281,18 +281,18 @@ function AssessmentPanel() {
 
 function WhoPanel() {
   const targets = [
-    { icon: Briefcase, title: 'Accounting & Professional Services' },
+    { icon: Briefcase, title: 'Accounting Firms & CPAs' },
+    { icon: Building2, title: 'Law Firms & Legal Practices' },
     { icon: Home, title: 'Property Managers & Real Estate Operators' },
     { icon: Stethoscope, title: 'Medical Clinics & Offices' },
-    { icon: Building2, title: 'Operations-Heavy SMBs' },
   ];
 
   return (
     <div>
-      <h2 className="text-3xl mb-6">We Help Businesses Like Yours</h2>
+      <h2 className="text-3xl mb-6">We Help Teams Like Yours</h2>
       <p className="mb-8">
-        Our approach works best for <strong>operations-heavy small and medium businesses</strong> — 
-        teams that are spending too much time on repetitive work that could be offloaded.
+        Our approach works best for <strong>accounting firms, legal practices, and professional services teams</strong> — 
+        organizations spending too much time on repetitive work that could be offloaded.
       </p>
       
       <div className="grid md:grid-cols-2 gap-4 mb-8">

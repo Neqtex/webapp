@@ -21,10 +21,94 @@ import {
   Star,
   Loader2,
   AlertCircle,
-  CheckCircle2
+  CheckCircle2,
+  Scale,
+  Calculator,
+  ArrowRight
 } from 'lucide-react';
 
 const CALENDLY_URL = 'https://calendly.com/neqtexdev1/30min';
+
+// Animated Process Flow Component
+function ProcessAnimation() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [showTagline, setShowTagline] = useState(false);
+  
+  const steps = [
+    { text: 'Assessment', icon: Search },
+    { text: 'Proof of Concept', icon: TestTube },
+    { text: 'Deployment', icon: Rocket },
+    { text: 'Ongoing Support', icon: HeartHandshake },
+  ];
+
+  useEffect(() => {
+    // Animate through steps
+    const stepInterval = setInterval(() => {
+      setCurrentStep((prev) => {
+        if (prev < steps.length - 1) {
+          return prev + 1;
+        }
+        return prev;
+      });
+    }, 800);
+
+    // Show tagline after all steps
+    const taglineTimeout = setTimeout(() => {
+      setShowTagline(true);
+    }, steps.length * 800 + 400);
+
+    return () => {
+      clearInterval(stepInterval);
+      clearTimeout(taglineTimeout);
+    };
+  }, []);
+
+  return (
+    <div className="mt-6 mb-8">
+      {/* Process Steps */}
+      <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2 mb-4">
+        {steps.map((step, index) => {
+          const Icon = step.icon;
+          const isVisible = index <= currentStep;
+          const isActive = index === currentStep;
+          
+          return (
+            <div key={step.text} className="flex items-center">
+              <div 
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-500 ${
+                  isVisible 
+                    ? isActive 
+                      ? 'bg-[#006599] text-white scale-105' 
+                      : 'bg-white/20 text-white'
+                    : 'opacity-0'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span className="text-sm font-medium whitespace-nowrap">{step.text}</span>
+              </div>
+              {index < steps.length - 1 && (
+                <ArrowRight 
+                  className={`w-4 h-4 mx-1 transition-all duration-500 ${
+                    index < currentStep ? 'opacity-70' : 'opacity-0'
+                  }`} 
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+      
+      {/* Tagline */}
+      <p 
+        className={`text-sm text-center lg:text-right italic text-white/80 transition-all duration-700 ${
+          showTagline ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+        }`}
+      >
+        We start small, prove value, then scale responsibly.
+      </p>
+    </div>
+  );
+}
 
 type PanelId = 'welcome' | 'assessment' | 'who' | 'process' | 'contact' | 'book' | null;
 
@@ -90,7 +174,7 @@ export default function HomePage() {
           backgroundImage: 'url("/hero.jpg")',
         }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Main Content - Hidden when modal is active */}
@@ -104,9 +188,12 @@ export default function HomePage() {
               <div className="w-32 h-0.5 bg-white mx-auto lg:ml-auto lg:mr-0 mb-4">
                 <div className="w-8 h-2 bg-white ml-auto -mt-0.5" />
               </div>
-              <p className="text-lg opacity-90 mb-8">
-                Operational Offload & Cost Relief for small teams who are tired of paying for work they shouldn't be doing.
+              <p className="text-lg opacity-90 mb-4">
+                Operational Offload & Cost Relief for accounting and legal teams tired of paying for work they shouldn't be doing.
               </p>
+              
+              {/* Animated Process Flow */}
+              <ProcessAnimation />
               
               {/* Logo */}
               <img src="/neqtex_logo.svg" alt="Neqtex Logo" className="w-[300px] h-auto mx-auto lg:ml-auto lg:mr-0" />
@@ -158,6 +245,7 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
           <p className="text-sm opacity-80">Copyright © 2026 Neqtex LLC</p>
           <div className="flex gap-4 text-sm opacity-80">
+            <Link href="/about" className="hover:text-[#006599] transition-colors">About Us</Link>
             <Link href="/privacy" className="hover:text-[#006599] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#006599] transition-colors">Terms of Service</Link>
           </div>
@@ -242,10 +330,10 @@ function WelcomePanel() {
       <div className="grid md:grid-cols-2 gap-8">
         <div>
           <p className="mb-4">
-            We help small teams <strong>stop paying for work they shouldn't be doing</strong>.
+            We help accounting and legal teams <strong>stop paying for work they shouldn't be doing</strong>.
           </p>
           <p className="mb-4">
-            Most small businesses are drowning in operational overhead — repetitive tasks, manual processes, 
+            Most professional services firms are drowning in operational overhead — repetitive tasks, manual processes, 
             and inefficiencies that drain time and money. We're here to change that.
           </p>
           <p>
@@ -319,18 +407,18 @@ function WelcomePanel() {
 
 function WhoPanel() {
   const targets = [
-    { icon: Briefcase, title: 'Accounting & Professional Services' },
+    { icon: Briefcase, title: 'Accounting Firms & CPAs' },
+    { icon: Building2, title: 'Law Firms & Legal Practices' },
     { icon: Home, title: 'Property Managers & Real Estate Operators' },
     { icon: Stethoscope, title: 'Medical Clinics & Offices' },
-    { icon: Building2, title: 'Operations-Heavy SMBs' },
   ];
 
   return (
     <div>
-      <h2 className="text-3xl mb-6">We Help Businesses Like Yours</h2>
+      <h2 className="text-3xl mb-6">We Help Teams Like Yours</h2>
       <p className="mb-8">
-        Our approach works best for <strong>operations-heavy small and medium businesses</strong> — 
-        teams that are spending too much time on repetitive work that could be offloaded.
+        Our approach works best for <strong>accounting firms, legal practices, and professional services teams</strong> — 
+        organizations spending too much time on repetitive work that could be offloaded.
       </p>
       
       <div className="grid md:grid-cols-2 gap-4 mb-8">

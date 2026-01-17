@@ -4,9 +4,9 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
-  title: "Neqtex | Operational Offload & Cost Relief",
-  description: "We help small teams stop paying for work they shouldn't be doing. Free operational offload assessment for accounting firms, property managers, medical clinics, and operations-heavy SMBs.",
-  keywords: ["operational offload", "cost relief", "business efficiency", "process automation", "SMB consulting", "operational assessment"],
+  title: "Neqtex | Operational Offload & Cost Relief for Accounting & Legal Teams",
+  description: "We help accounting and legal teams stop paying for work they shouldn't be doing. Free operational offload assessment for accounting firms, law practices, and professional services.",
+  keywords: ["operational offload", "cost relief", "accounting automation", "legal practice efficiency", "professional services consulting", "operational assessment", "accounting firms", "law firms"],
   authors: [{ name: "Neqtex LLC" }],
   creator: "Neqtex LLC",
   publisher: "Neqtex LLC",
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Neqtex",
-    title: "Neqtex | Operational Offload & Cost Relief",
-    description: "We help small teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
+    title: "Neqtex | Operational Offload & Cost Relief for Accounting & Legal Teams",
+    description: "We help accounting and legal teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
     images: [
       {
         url: "/hero.jpg",
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Neqtex | Operational Offload & Cost Relief",
-    description: "We help small teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
+    title: "Neqtex | Operational Offload & Cost Relief for Accounting & Legal Teams",
+    description: "We help accounting and legal teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
     images: ["/hero.jpg"],
   },
   robots: {
@@ -98,7 +98,7 @@ export default function RootLayout({
                     height: 512,
                   },
                   image: `${siteUrl}/icon-512x512.png`,
-                  description: 'Operational Offload & Cost Relief for small teams who are tired of paying for work they shouldn\'t be doing.',
+                  description: 'Operational Offload & Cost Relief for accounting and legal teams tired of paying for work they shouldn\'t be doing.',
                   sameAs: [],
                 },
                 {
@@ -114,14 +114,14 @@ export default function RootLayout({
                   '@type': 'WebPage',
                   '@id': `${siteUrl}/#webpage`,
                   url: siteUrl,
-                  name: 'Neqtex | Operational Offload & Cost Relief',
+                  name: 'Neqtex | Operational Offload & Cost Relief for Accounting & Legal Teams',
                   isPartOf: {
                     '@id': `${siteUrl}/#website`,
                   },
                   about: {
                     '@id': `${siteUrl}/#organization`,
                   },
-                  description: 'We help small teams stop paying for work they shouldn\'t be doing. Free operational offload assessment for accounting firms, property managers, medical clinics, and operations-heavy SMBs.',
+                  description: 'We help accounting and legal teams stop paying for work they shouldn\'t be doing. Free operational offload assessment for accounting firms, law practices, and professional services.',
                 },
               ],
             }),

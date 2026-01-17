@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Neqtex | Operational Offload & Cost Relief",
-  description: "We help small teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
+  title: "Neqtex | Operational Offload & Cost Relief for Accounting & Legal Teams",
+  description: "We help accounting and legal teams stop paying for work they shouldn't be doing. Free operational offload assessment.",
 };
 
 export default function RootLayout({
