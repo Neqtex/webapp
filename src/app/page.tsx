@@ -24,7 +24,11 @@ import {
   CheckCircle2,
   Scale,
   Calculator,
-  ArrowRight
+  ArrowRight,
+  Shield,
+  TrendingUp,
+  Zap,
+  ChevronDown
 } from 'lucide-react';
 
 const CALENDLY_URL = 'https://calendly.com/neqtexdev1/30min';
@@ -220,6 +224,23 @@ export default function HomePage() {
                     </Link>
                   );
                 }
+
+                // How It Works links to separate page
+                if (tile.id === 'process') {
+                  return (
+                    <Link
+                      key={tile.id}
+                      href="/how-it-works"
+                      aria-label={`Go to ${tile.label} page`}
+                      className="group relative w-full aspect-square sm:w-[165px] sm:h-[165px] border border-white bg-transparent hover:bg-[#2c2a35] transition-all duration-300 cursor-pointer flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#006599] focus:ring-offset-2 focus:ring-offset-transparent"
+                    >
+                      <Icon className="w-8 h-8 sm:w-10 sm:h-10 mb-4 sm:mb-6 group-hover:text-[#a9a9a9] transition-colors" />
+                      <span className="absolute bottom-2 sm:bottom-3 left-0 right-0 text-center text-xs sm:text-sm group-hover:text-[#a9a9a9] transition-colors">
+                        {tile.label}
+                      </span>
+                    </Link>
+                  );
+                }
                 
                 return (
                   <button
@@ -291,8 +312,6 @@ function PanelContent({ id }: { id: PanelId }) {
       return <WelcomePanel />;
     case 'who':
       return <WhoPanel />;
-    case 'process':
-      return <ProcessPanel />;
     case 'contact':
       return <ContactPanel />;
     case 'book':
@@ -443,50 +462,6 @@ function WhoPanel() {
           <li>• Processes have grown inefficient over time</li>
           <li>• You don't have time to identify and fix operational issues</li>
         </ul>
-      </div>
-    </div>
-  );
-}
-
-function ProcessPanel() {
-  const steps = [
-    { icon: Search, title: 'Assess', desc: 'We uncover operational overload and identify where your team is losing time.' },
-    { icon: TestTube, title: 'Prove', desc: 'Deliver a small Proof-of-Relief to show real results before any big commitment.' },
-    { icon: Rocket, title: 'Deploy', desc: 'Safe implementation of solutions that fit your existing workflow.' },
-    { icon: HeartHandshake, title: 'Support', desc: 'Optional ongoing help to ensure everything keeps running smoothly.' },
-  ];
-
-  return (
-    <div>
-      <h2 className="text-3xl mb-6">How It Works</h2>
-      <p className="mb-8">
-        A simple, safe process designed to get you results without disruption.
-      </p>
-      
-      <div className="space-y-6">
-        {steps.map((step, i) => {
-          const Icon = step.icon;
-          return (
-            <div key={i} className="flex gap-6 items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#006599] rounded-full flex items-center justify-center text-lg font-semibold">
-                {i + 1}
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <Icon className="w-5 h-5 text-[#006599]" />
-                  <h3 className="text-xl">{step.title}</h3>
-                </div>
-                <p className="text-[#a9a9a9]">{step.desc}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="mt-8 pt-6 border-t border-[#4d4c59]">
-        <p className="text-center">
-          <strong>No commitment required.</strong> Start with a free assessment and see results before deciding.
-        </p>
       </div>
     </div>
   );
