@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -30,6 +30,27 @@ const CALENDLY_URL = 'https://calendly.com/neqtexdev1/30min';
 
 export default function HowItWorksPage() {
   const [expandedStep, setExpandedStep] = useState<number | null>(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-cycle through steps to show interactivity
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setExpandedStep((prev) => {
+        if (prev === null || prev >= 3) return 0;
+        return prev + 1;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  // Stop auto-play when user interacts
+  const handleStepClick = (index: number) => {
+    setIsAutoPlaying(false);
+    setExpandedStep(expandedStep === index ? null : index);
+  };
 
   const steps = [
     { 
@@ -44,8 +65,7 @@ export default function HowItWorksPage() {
         'Receive a written report with actionable recommendations'
       ],
       timeline: '1 session',
-      cost: 'Free',
-      color: 'from-blue-500 to-blue-600'
+      cost: 'Free'
     },
     { 
       icon: TestTube, 
@@ -59,8 +79,7 @@ export default function HowItWorksPage() {
         'Document ROI before scaling further'
       ],
       timeline: '2-4 weeks',
-      cost: '$500-2K',
-      color: 'from-purple-500 to-purple-600'
+      cost: '$500-2K'
     },
     { 
       icon: Rocket, 
@@ -74,8 +93,7 @@ export default function HowItWorksPage() {
         'Careful change management to minimize disruption'
       ],
       timeline: '4-8 weeks',
-      cost: 'Custom',
-      color: 'from-green-500 to-green-600'
+      cost: 'Custom'
     },
     { 
       icon: HeartHandshake, 
@@ -89,8 +107,7 @@ export default function HowItWorksPage() {
         'Priority access to new solutions and capabilities'
       ],
       timeline: 'Ongoing',
-      cost: 'Monthly retainer',
-      color: 'from-orange-500 to-orange-600'
+      cost: 'Monthly retainer'
     },
   ];
 
@@ -191,26 +208,60 @@ export default function HowItWorksPage() {
 
           {/* Visual Process Flow */}
           <section className="glass-modal p-8 mb-8">
-            <h2 className="text-2xl mb-8 text-center">The Neqtex Process</h2>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl">The Neqtex Process</h2>
+              <p className="text-sm text-white/50 animate-pulse">
+                {isAutoPlaying ? '↻ Auto-playing' : 'Click any step to explore'}
+              </p>
+            </div>
             
             {/* Horizontal Timeline */}
             <div className="relative mb-12">
-              {/* Connection Line */}
-              <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-1 bg-gradient-to-r from-blue-500 via-purple-500 via-green-500 to-orange-500 rounded-full" />
-              
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                 {steps.map((step, i) => {
                   const Icon = step.icon;
+                  const isActive = expandedStep === i;
+                  const isPast = expandedStep !== null && i < expandedStep;
                   return (
                     <div 
                       key={i} 
-                      className="flex flex-col items-center text-center cursor-pointer group"
-                      onClick={() => setExpandedStep(expandedStep === i ? null : i)}
+                      className="relative flex flex-col items-center text-center cursor-pointer group"
+                      onClick={() => handleStepClick(i)}
                     >
-                      <div className={`relative z-10 w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform`}>
-                        <Icon className="w-8 h-8 text-white" />
+                      {/* Connector line to next step */}
+                      {i < steps.length - 1 && (
+                        <div className="hidden md:block absolute top-8 left-[75%] w-[calc(100%-50%)] h-0.5">
+                          <div className={`h-full rounded-full transition-all duration-500 ${
+                            isPast || isActive 
+                              ? 'bg-[#006599]' 
+                              : 'bg-white/20'
+                          }`}>
+                            {/* Animated pulse for active connector */}
+                            {isActive && (
+                              <div className="absolute inset-0 bg-[#006599] rounded-full animate-pulse" />
+                            )}
+                          </div>
+                          {/* Arrow indicator */}
+                          <div className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 w-2 h-2 border-r-2 border-t-2 rotate-45 transition-colors duration-500 ${
+                            isPast || isActive ? 'border-[#006599]' : 'border-white/20'
+                          }`} />
+                        </div>
+                      )}
+                      
+                      <div className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center mb-3 shadow-lg transition-all duration-300 ${
+                        isActive 
+                          ? 'bg-[#006599] ring-2 ring-[#006599]/50 ring-offset-2 ring-offset-transparent scale-110' 
+                          : isPast
+                            ? 'bg-[#006599]/60'
+                            : 'glass-inner group-hover:bg-white/10 group-hover:scale-110'
+                      }`}>
+                        <Icon className={`w-7 h-7 transition-colors ${isActive || isPast ? 'text-white' : 'text-[#006599]'}`} />
+                        {/* Ripple effect on active */}
+                        {isActive && (
+                          <div className="absolute inset-0 rounded-full border-2 border-[#006599] animate-ping opacity-30" />
+                        )}
                       </div>
-                      <h3 className="font-semibold text-lg mb-1">{step.title}</h3>
+                      <h3 className={`font-semibold text-lg mb-1 transition-colors ${isActive ? 'text-[#006599]' : ''}`}>{step.title}</h3>
                       <p className="text-xs text-white/50 mb-2">{step.timeline}</p>
                       <p className="text-sm font-medium text-[#006599]">{step.cost}</p>
                     </div>
@@ -223,10 +274,10 @@ export default function HowItWorksPage() {
             {expandedStep !== null && (
               <div className="glass-inner p-6 animate-in fade-in duration-300">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${steps[expandedStep].color} flex items-center justify-center flex-shrink-0`}>
+                  <div className="w-12 h-12 rounded-full bg-[#006599]/20 border border-[#006599]/30 flex items-center justify-center flex-shrink-0">
                     {(() => {
                       const Icon = steps[expandedStep].icon;
-                      return <Icon className="w-6 h-6 text-white" />;
+                      return <Icon className="w-6 h-6 text-[#006599]" />;
                     })()}
                   </div>
                   <div>
@@ -274,8 +325,8 @@ export default function HowItWorksPage() {
                       <span className="text-white/60">Before Neqtex</span>
                       <span>0 hrs saved</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-0 bg-red-500/50 rounded-full" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-0 rounded-full" />
                     </div>
                   </div>
                   <div>
@@ -283,8 +334,8 @@ export default function HowItWorksPage() {
                       <span className="text-white/60">After Assessment</span>
                       <span>5-8 hrs</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[30%] bg-gradient-to-r from-blue-500 to-blue-400 rounded-full transition-all duration-1000" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[30%] bg-[#006599]/70 rounded-full transition-all duration-1000" />
                     </div>
                   </div>
                   <div>
@@ -292,8 +343,8 @@ export default function HowItWorksPage() {
                       <span className="text-white/60">After Proof of Concept</span>
                       <span>12-15 hrs</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[55%] bg-gradient-to-r from-purple-500 to-purple-400 rounded-full transition-all duration-1000" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[55%] bg-[#006599]/80 rounded-full transition-all duration-1000" />
                     </div>
                   </div>
                   <div>
@@ -301,8 +352,8 @@ export default function HowItWorksPage() {
                       <span className="text-white/60">After Full Deployment</span>
                       <span>20-30 hrs</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[85%] bg-gradient-to-r from-green-500 to-green-400 rounded-full transition-all duration-1000" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[85%] bg-[#006599] rounded-full transition-all duration-1000" />
                     </div>
                   </div>
                 </div>
@@ -318,37 +369,37 @@ export default function HowItWorksPage() {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/60">Operational Waste Identified</span>
-                      <span className="text-red-400">-$4,200/mo</span>
+                      <span className="text-white/40">-$4,200/mo</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[70%] bg-red-500/50 rounded-full" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[70%] bg-white/20 rounded-full" />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/60">Quick Wins (Assessment)</span>
-                      <span className="text-green-400">+$1,200/mo</span>
+                      <span className="text-[#006599]">+$1,200/mo</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[30%] bg-gradient-to-r from-green-500 to-green-400 rounded-full" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[30%] bg-[#006599]/70 rounded-full" />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/60">After Proof of Concept</span>
-                      <span className="text-green-400">+$2,800/mo</span>
+                      <span className="text-[#006599]">+$2,800/mo</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[55%] bg-gradient-to-r from-green-500 to-green-400 rounded-full" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[55%] bg-[#006599]/80 rounded-full" />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/60">Full Implementation</span>
-                      <span className="text-green-400">+$4,200/mo</span>
+                      <span className="text-[#006599]">+$4,200/mo</span>
                     </div>
-                    <div className="h-6 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[85%] bg-gradient-to-r from-green-500 to-green-400 rounded-full" />
+                    <div className="h-6 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                      <div className="h-full w-[85%] bg-[#006599] rounded-full" />
                     </div>
                   </div>
                 </div>
@@ -376,7 +427,7 @@ export default function HowItWorksPage() {
                       <td className="py-4 px-4 text-white/50">{row.traditional}</td>
                       <td className="py-4 px-4">
                         <span className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <CheckCircle className="w-4 h-4 text-[#006599]" />
                           {row.neqtex}
                         </span>
                       </td>
