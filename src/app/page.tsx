@@ -382,7 +382,7 @@ function WelcomePanel() {
               <span>Prove value before any big commitment</span>
             </li>
           </ul>
-          <p className="mt-6 text-[#a9a9a9]">
+          <p className="mt-6 text-white/70">
             Ready to see where you can start saving? 
             <a 
               href={CALENDLY_URL}
@@ -412,7 +412,7 @@ function WelcomePanel() {
                 ))}
               </div>
               <p className="text-sm mb-3 italic">&ldquo;{testimonial.quote}&rdquo;</p>
-              <p className="text-xs text-[#a9a9a9]">
+              <p className="text-xs text-white/70">
                 <strong className="text-white">{testimonial.author}</strong><br />
                 {testimonial.role}
               </p>
@@ -456,7 +456,7 @@ function WhoPanel() {
 
       <div className="glass-inner p-6">
         <h3 className="text-xl mb-4">Common Signs You Need Us:</h3>
-        <ul className="space-y-2 text-[#a9a9a9]">
+        <ul className="space-y-2 text-white/80">
           <li>• Your team is overwhelmed with repetitive, low-value tasks</li>
           <li>• You're paying for work that feels like it could be eliminated</li>
           <li>• Processes have grown inefficient over time</li>
@@ -598,7 +598,7 @@ function ContactPanel() {
         </div>
         <div>
           <h3 className="text-xl mb-4">Get In Touch</h3>
-          <div className="space-y-4 text-[#a9a9a9]">
+          <div className="space-y-4 text-white/80">
             <p>
               <strong className="text-white">Email:</strong><br />
               info@neqtex.com
@@ -667,7 +667,7 @@ function BookPanel() {
         </div>
         <div className="glass-inner p-6">
           <h3 className="text-xl mb-4">Schedule Now</h3>
-          <p className="text-[#a9a9a9] mb-6">
+          <p className="text-white/80 mb-6">
             Click below to choose a time that works best for you. Our calendar is synced in real-time.
           </p>
           <a 
@@ -680,7 +680,7 @@ function BookPanel() {
             Open Scheduling Calendar
             <ExternalLink className="w-4 h-4" />
           </a>
-          <p className="text-xs text-[#a9a9a9] text-center">
+          <p className="text-xs text-white/70 text-center">
             Powered by Calendly • 30-minute session
           </p>
         </div>
@@ -693,20 +693,20 @@ function BookPanel() {
           <div className="glass-inner p-5 text-center">
             <p className="text-2xl font-bold text-[#006599] mb-2">Free</p>
             <p className="font-semibold mb-2">Assessment</p>
-            <p className="text-sm text-[#a9a9a9]">No-obligation operational review with actionable recommendations</p>
+            <p className="text-sm text-white/80">No-obligation operational review with actionable recommendations</p>
           </div>
           <div className="glass-inner p-5 text-center border-[#006599] border">
             <p className="text-2xl font-bold text-[#006599] mb-2">$500-2K</p>
             <p className="font-semibold mb-2">Proof of Relief</p>
-            <p className="text-sm text-[#a9a9a9]">Small pilot project to demonstrate ROI before larger commitment</p>
+            <p className="text-sm text-white/80">Small pilot project to demonstrate ROI before larger commitment</p>
           </div>
           <div className="glass-inner p-5 text-center">
             <p className="text-2xl font-bold text-[#006599] mb-2">Custom</p>
             <p className="font-semibold mb-2">Full Implementation</p>
-            <p className="text-sm text-[#a9a9a9]">Tailored solution based on your specific needs and scope</p>
+            <p className="text-sm text-white/80">Tailored solution based on your specific needs and scope</p>
           </div>
         </div>
-        <p className="text-center text-[#a9a9a9] text-sm mt-4">
+        <p className="text-center text-white/70 text-sm mt-4">
           All pricing discussed transparently after your free assessment. No surprises, no hidden fees.
         </p>
       </div>

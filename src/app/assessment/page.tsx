@@ -102,10 +102,10 @@ export default function AssessmentPage() {
             <div className="w-24 h-0.5 bg-white mb-6">
               <div className="w-6 h-2 bg-white -mt-0.5" />
             </div>
-            <p className="text-xl text-white/80 max-w-2xl">
+            <p className="text-xl text-white/90 max-w-2xl">
               Discover where your business is losing time and money — and how to fix it.
               <br />
-              <span className="text-white/60">No tech jargon. No obligation. No sales fluff.</span>
+              <span className="text-white/80">No tech jargon. No obligation. No sales fluff.</span>
             </p>
           </section>
 
@@ -121,28 +121,28 @@ export default function AssessmentPage() {
                   <Clock className="w-6 h-6 text-[#006599] flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">30-45 Min Session</p>
-                    <p className="text-sm text-white/60">Zoom or in-person review</p>
+                    <p className="text-sm text-white/80">Zoom or in-person review</p>
                   </div>
                 </div>
                 <div className="glass-inner p-4 flex items-start gap-4">
                   <Search className="w-6 h-6 text-[#006599] flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Process Mapping</p>
-                    <p className="text-sm text-white/60">We identify bottlenecks</p>
+                    <p className="text-sm text-white/80">We identify bottlenecks</p>
                   </div>
                 </div>
                 <div className="glass-inner p-4 flex items-start gap-4">
                   <CheckCircle className="w-6 h-6 text-[#006599] flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">3-5 Quick Wins</p>
-                    <p className="text-sm text-white/60">Immediate opportunities</p>
+                    <p className="text-sm text-white/80">Immediate opportunities</p>
                   </div>
                 </div>
                 <div className="glass-inner p-4 flex items-start gap-4">
                   <FileText className="w-6 h-6 text-[#006599] flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Actionable Report</p>
-                    <p className="text-sm text-white/60">Yours to keep</p>
+                    <p className="text-sm text-white/80">Yours to keep</p>
                   </div>
                 </div>
               </div>
@@ -158,11 +158,11 @@ export default function AssessmentPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <p className="text-sm text-white/80">Real conversations. Real solutions.</p>
+                  <p className="text-sm text-white/90">Real conversations. Real solutions.</p>
                 </div>
               </div>
 
-              <p className="text-white/70">
+              <p className="text-white/80">
                 We believe in proving our value before asking for any commitment. 
                 The assessment gives you real insights you can act on — whether you work with us or not.
               </p>
@@ -173,7 +173,7 @@ export default function AssessmentPage() {
               {/* Schedule CTA */}
               <div className="glass-modal p-6">
                 <h3 className="text-xl mb-4">Ready to Start?</h3>
-                <p className="text-white/60 mb-6 text-sm">
+                <p className="text-white/80 mb-6 text-sm">
                   Schedule your free assessment. Most clients see potential savings within the first call.
                 </p>
                 <a 
@@ -208,7 +208,7 @@ export default function AssessmentPage() {
                         />
                         <div>
                           <p className="text-xs font-semibold">{t.name}</p>
-                          <p className="text-xs text-white/50">{t.role}</p>
+                          <p className="text-xs text-white/70">{t.role}</p>
                         </div>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ export default function AssessmentPage() {
                     )}
                   </button>
                   {openFaq === index && (
-                    <div className="px-4 pb-4 text-white/70 text-sm">
+                    <div className="px-4 pb-4 text-white/80 text-sm">
                       {faq.a}
                     </div>
                   )}
@@ -250,7 +250,7 @@ export default function AssessmentPage() {
           <section className="text-center mb-12">
             <p className="text-xl mb-6">
               <strong>No commitment required.</strong>
-              <span className="text-white/60 block sm:inline sm:ml-2">
+              <span className="text-white/80 block sm:inline sm:ml-2">
                 Start with a free assessment and see results before deciding.
               </span>
             </p>
@@ -268,7 +268,7 @@ export default function AssessmentPage() {
 
           {/* Footer */}
           <footer className="text-center py-6 border-t border-white/10">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-white/50">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-white/70">
               <p>Copyright © 2026 Neqtex LLC</p>
               <div className="flex gap-4">
                 <Link href="/about" className="hover:text-[#006599] transition-colors">About Us</Link>

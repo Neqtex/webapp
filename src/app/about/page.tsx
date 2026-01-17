@@ -89,7 +89,7 @@ export default function AboutPage() {
             <div className="w-24 h-0.5 bg-white mb-6">
               <div className="w-6 h-2 bg-white -mt-0.5" />
             </div>
-            <p className="text-xl text-white/80 max-w-2xl">
+            <p className="text-xl text-white/90 max-w-2xl">
               We're on a mission to help accounting and legal teams reclaim their time 
               and stop paying for work that drains their resources.
             </p>
@@ -100,17 +100,17 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-2xl mb-4">Our Story</h2>
-                <p className="text-white/70 mb-4">
+                <p className="text-white/80 mb-4">
                   Neqtex was born from a simple observation: too many professional services firms 
                   are drowning in operational overhead. Accounting teams buried in manual data entry. 
                   Law firms spending billable hours on administrative tasks. Medical practices 
                   struggling with inefficient workflows.
                 </p>
-                <p className="text-white/70 mb-4">
+                <p className="text-white/80 mb-4">
                   We saw talented professionals spending more time on busywork than on the work 
                   that actually matters — serving their clients and growing their practices.
                 </p>
-                <p className="text-white/70">
+                <p className="text-white/80">
                   That's why we created Neqtex: to provide <strong className="text-white">operational offload and cost relief</strong> that 
                   actually works. No tech jargon, no complex implementations, no disruption to 
                   what's already working. Just real solutions that free your team to focus on 
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg">
                     <h3 className="text-xl font-semibold">Chike Okonta</h3>
-                    <p className="text-white/70 text-sm">Founder & CEO</p>
+                    <p className="text-white/80 text-sm">Founder & CEO</p>
                   </div>
                 </div>
                 <div className="flex gap-3 mt-4">
@@ -181,13 +181,13 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="lg:col-span-2">
-                <p className="text-white/80 mb-4">
+                <p className="text-white/90 mb-4">
                   Chike Okonta founded Neqtex with a vision to transform how professional services 
                   firms handle their operational burdens. With a background spanning technology, 
                   business consulting, and operations management, Chike brings a unique perspective 
                   to solving the everyday challenges that accounting and legal teams face.
                 </p>
-                <p className="text-white/70 mb-6">
+                <p className="text-white/80 mb-6">
                   "I've seen firsthand how much time and money gets wasted on tasks that don't 
                   add value," says Chike. "My goal with Neqtex is simple: help teams identify 
                   what's costing them, prove we can fix it, and then deliver lasting solutions. 
@@ -199,21 +199,21 @@ export default function AboutPage() {
                     <Briefcase className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Operations Expert</p>
-                      <p className="text-xs text-white/50">Process optimization specialist</p>
+                      <p className="text-xs text-white/70">Process optimization specialist</p>
                     </div>
                   </div>
                   <div className="glass-inner p-4 flex items-start gap-3">
                     <GraduationCap className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Tech Background</p>
-                      <p className="text-xs text-white/50">Software & systems experience</p>
+                      <p className="text-xs text-white/70">Software & systems experience</p>
                     </div>
                   </div>
                   <div className="glass-inner p-4 flex items-start gap-3">
                     <Award className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-sm">Client-Focused</p>
-                      <p className="text-xs text-white/50">Results-driven approach</p>
+                      <p className="text-xs text-white/70">Results-driven approach</p>
                     </div>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function AboutPage() {
                       </div>
                       <h3 className="text-lg font-semibold">{value.title}</h3>
                     </div>
-                    <p className="text-white/60 text-sm">{value.description}</p>
+                    <p className="text-white/80 text-sm">{value.description}</p>
                   </div>
                 );
               })}
@@ -247,29 +247,29 @@ export default function AboutPage() {
             <h2 className="text-2xl mb-6">Our Approach</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="text-white/70 mb-4">
+                <p className="text-white/80 mb-4">
                   We don't believe in one-size-fits-all solutions or ripping out systems that work. 
                   Our approach is methodical, safe, and proven:
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
-                    <span className="text-white/80"><strong>Assessment</strong> — We map your processes and identify opportunities</span>
+                    <span className="text-white/90"><strong>Assessment</strong> — We map your processes and identify opportunities</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
-                    <span className="text-white/80"><strong>Proof of Concept</strong> — We demonstrate value with a small pilot</span>
+                    <span className="text-white/90"><strong>Proof of Concept</strong> — We demonstrate value with a small pilot</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
-                    <span className="text-white/80"><strong>Deployment</strong> — We implement solutions that fit your workflow</span>
+                    <span className="text-white/90"><strong>Deployment</strong> — We implement solutions that fit your workflow</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#006599] flex-shrink-0 mt-0.5" />
-                    <span className="text-white/80"><strong>Ongoing Support</strong> — We ensure lasting results, not quick fixes</span>
+                    <span className="text-white/90"><strong>Ongoing Support</strong> — We ensure lasting results, not quick fixes</span>
                   </li>
                 </ul>
-                <p className="text-white/60 mt-4 italic">
+                <p className="text-white/80 mt-4 italic">
                   "We start small, prove value, then scale responsibly."
                 </p>
               </div>
@@ -291,7 +291,7 @@ export default function AboutPage() {
           {/* CTA Section */}
           <section className="text-center mb-12">
             <h2 className="text-2xl mb-4">Ready to Work Together?</h2>
-            <p className="text-white/60 mb-6 max-w-xl mx-auto">
+            <p className="text-white/80 mb-6 max-w-xl mx-auto">
               Start with a free operational assessment. No commitment, no sales pressure — 
               just actionable insights you can use.
             </p>
