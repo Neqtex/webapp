@@ -12,30 +12,19 @@ export const metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen relative">
-      {/* Background */}
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
-        style={{ backgroundImage: 'url("/hero.jpg")' }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+    <div className="mx-auto max-w-3xl px-5 py-24 sm:px-8 lg:py-32">
+      <Link href="/" className="text-sm text-gold transition-colors hover:text-gold-soft">
+        ← Back to home
+      </Link>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
-        <div className="glass-modal p-8 md:p-12">
-          <Link href="/" className="text-[#006599] hover:text-[#0e7fb9] mb-6 inline-block">
-            ← Back to Home
-          </Link>
-          
-          <h1 className="text-4xl mb-8">Privacy Policy</h1>
-          <p className="text-[#a9a9a9] mb-8">Last updated: January 3, 2026</p>
+      <h1 className="mt-8 mb-3">Privacy Policy</h1>
+      <p className="mb-10 text-sm text-text-muted">Last updated: January 3, 2026</p>
 
-          <div className="space-y-8">
+      <div className="space-y-10 leading-relaxed">
             <section>
               <h2 className="text-2xl mb-4">1. Information We Collect</h2>
               <p className="mb-4">We collect information you provide directly to us, including:</p>
-              <ul className="list-disc list-inside space-y-2 text-[#a9a9a9]">
+              <ul className="list-disc list-inside space-y-2 text-text-secondary">
                 <li>Name and contact information (email address, phone number)</li>
                 <li>Company name and business information</li>
                 <li>Messages and communications you send to us</li>
@@ -46,7 +35,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-2xl mb-4">2. How We Use Your Information</h2>
               <p className="mb-4">We use the information we collect to:</p>
-              <ul className="list-disc list-inside space-y-2 text-[#a9a9a9]">
+              <ul className="list-disc list-inside space-y-2 text-text-secondary">
                 <li>Respond to your inquiries and provide customer support</li>
                 <li>Schedule and conduct assessments</li>
                 <li>Send you information about our services</li>
@@ -57,7 +46,7 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl mb-4">3. Information Sharing</h2>
-              <p className="text-[#a9a9a9]">
+              <p className="text-text-secondary">
                 We do not sell, trade, or otherwise transfer your personal information to third parties 
                 without your consent, except as necessary to provide our services or as required by law.
               </p>
@@ -65,7 +54,7 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl mb-4">4. Data Security</h2>
-              <p className="text-[#a9a9a9]">
+              <p className="text-text-secondary">
                 We implement appropriate technical and organizational measures to protect your personal 
                 information against unauthorized access, alteration, disclosure, or destruction.
               </p>
@@ -73,7 +62,7 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl mb-4">5. Cookies</h2>
-              <p className="text-[#a9a9a9]">
+              <p className="text-text-secondary">
                 We use cookies and similar tracking technologies to analyze website traffic and improve 
                 your experience. You can control cookies through your browser settings.
               </p>
@@ -82,7 +71,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-2xl mb-4">6. Your Rights</h2>
               <p className="mb-4">You have the right to:</p>
-              <ul className="list-disc list-inside space-y-2 text-[#a9a9a9]">
+              <ul className="list-disc list-inside space-y-2 text-text-secondary">
                 <li>Access the personal information we hold about you</li>
                 <li>Request correction of inaccurate information</li>
                 <li>Request deletion of your personal information</li>
@@ -93,15 +82,13 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-2xl mb-4">7. Contact Us</h2>
-              <p className="text-[#a9a9a9]">
+              <p className="text-text-secondary">
                 If you have any questions about this Privacy Policy, please contact us at{' '}
-                <a href="mailto:info@neqtex.com" className="text-[#006599] hover:text-[#0e7fb9]">
+                <a href="mailto:info@neqtex.com" className="text-gold hover:text-gold-soft">
                   info@neqtex.com
                 </a>
               </p>
             </section>
-          </div>
-        </div>
       </div>
     </div>
   );

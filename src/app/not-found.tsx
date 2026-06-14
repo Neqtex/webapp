@@ -1,30 +1,22 @@
-import Link from 'next/link';
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center relative">
-      {/* Background */}
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
-        style={{ backgroundImage: 'url("/hero.jpg")' }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
-      {/* Content */}
-      <div className="glass-modal p-12 text-center max-w-lg mx-4">
-        <h1 className="text-6xl font-light mb-4">404</h1>
-        <h2 className="text-2xl mb-6">Page Not Found</h2>
-        <p className="text-[#a9a9a9] mb-8">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <Link 
-          href="/"
-          className="btn-glass inline-flex items-center gap-2"
-        >
-          Return Home
+    <Container className="flex min-h-[70vh] flex-col items-center justify-center py-24 text-center">
+      <p className="eyebrow eyebrow--plain text-gold">404</p>
+      <h1 className="mt-6 text-balance">This page isn&apos;t here.</h1>
+      <p className="mt-5 max-w-md text-text-secondary">
+        The page you&apos;re looking for doesn&apos;t exist or has moved. Let&apos;s
+        get you back on track.
+      </p>
+      <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+        <Button href="/">Return home</Button>
+        <Link href="/contact" className="btn btn-secondary">
+          Contact us
         </Link>
       </div>
-    </div>
+    </Container>
   );
 }
