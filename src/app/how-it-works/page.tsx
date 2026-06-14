@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import PageHeader from "@/components/layout/PageHeader";
 import Button from "@/components/ui/Button";
 import CTASection from "@/components/home/CTASection";
+import OperationsPipeline from "@/components/shared/OperationsPipeline";
 
 const STEPS = [
   {
@@ -116,6 +117,8 @@ export default function HowItWorksPage() {
           ))}
         </div>
       </Section>
+
+      <OperationsPipeline />
 
       <Section className="border-t border-line">
         <div className="max-w-2xl">

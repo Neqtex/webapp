@@ -322,6 +322,13 @@ textarea.field {
   to { transform: rotate(-360deg); }
 }
 
+@keyframes neq-flow {
+  0% { top: 3%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 97%; opacity: 0; }
+}
+
 .animate-fade-up {
   animation: neq-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

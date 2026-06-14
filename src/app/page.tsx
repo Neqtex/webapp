@@ -4,6 +4,7 @@ import ProblemSection from "@/components/home/ProblemSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import StickyShowcase from "@/components/home/StickyShowcase";
 import PrivateAISection from "@/components/home/PrivateAISection";
+import OperationsPipeline from "@/components/shared/OperationsPipeline";
 import DeploymentSection from "@/components/home/DeploymentSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import ProcessSection from "@/components/home/ProcessSection";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <ServicesSection />
       <StickyShowcase />
       <PrivateAISection />
+      <OperationsPipeline />
       <DeploymentSection />
       <IndustriesSection />
       <ProcessSection />
