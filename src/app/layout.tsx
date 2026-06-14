@@ -154,9 +154,7 @@ export default function RootLayout({
         </a>
         <PageBackground />
         <Navbar />
-        <main id="main" className="pt-16 lg:pt-[72px]">
-          {children}
-        </main>
+        <main id="main">{children}</main>
         <Footer />
         <CookieConsent />
       </body>

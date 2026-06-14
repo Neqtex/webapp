@@ -1,29 +1,81 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { NAV_ITEMS, SITE } from "@/lib/constants";
 
+interface Indicator {
+  left: number;
+  width: number;
+  visible: boolean;
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [indicator, setIndicator] = useState<Indicator>({
+    left: 0,
+    width: 0,
+    visible: false,
+  });
+
+  const listRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+
+  const isActive = useCallback(
+    (href: string) =>
+      href === "/" ? pathname === "/" : pathname.startsWith(href),
+    [pathname]
+  );
+
+  // Move the sliding indicator to a given link element.
+  const moveTo = useCallback((el: HTMLAnchorElement | null) => {
+    const list = listRef.current;
+    if (!el || !list) return;
+    const listRect = list.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
+    setIndicator({
+      left: rect.left - listRect.left,
+      width: rect.width,
+      visible: true,
+    });
+  }, []);
+
+  // Rest the indicator on the active link, or hide it if none is active.
+  const settle = useCallback(() => {
+    const activeItem = NAV_ITEMS.find((item) => isActive(item.href));
+    if (activeItem) {
+      moveTo(linkRefs.current[activeItem.href]);
+    } else {
+      setIndicator((prev) => ({ ...prev, visible: false }));
+    }
+  }, [isActive, moveTo]);
 
   useEffect(() => {
+    setScrolled(window.scrollY > 12);
     const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // Body scroll lock + escape close while menu open
+  // Position the indicator after layout/fonts settle and on resize.
+  useEffect(() => {
+    settle();
+    const id = window.setTimeout(settle, 250);
+    window.addEventListener("resize", settle);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("resize", settle);
+    };
+  }, [settle]);
+
   useEffect(() => {
     if (!open) return;
     const { overflow } = document.body.style;
@@ -38,71 +90,77 @@ export default function Navbar() {
     };
   }, [open]);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled
-          ? "border-line bg-background/80 backdrop-blur-xl"
-          : "border-transparent bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:h-[72px]"
+        className={`flex items-center gap-1.5 rounded-full border py-2 pl-4 pr-2 transition-all duration-300 ${
+          scrolled
+            ? "border-line bg-background/80 shadow-[0_16px_50px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+            : "border-line/60 bg-background/55 backdrop-blur-md"
+        }`}
       >
         <Link
           href="/"
           aria-label="Neqtex home"
-          className="flex items-center gap-2.5"
+          className="flex items-center pr-1"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/neqtex_logo.svg"
-            alt=""
-            width={120}
-            height={28}
-            className="h-7 w-auto"
-          />
+          <img src="/neqtex_logo.svg" alt="" className="h-7 w-auto" />
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 lg:flex">
+        {/* Desktop links with sliding indicator */}
+        <div
+          ref={listRef}
+          onMouseLeave={settle}
+          className="relative ml-2 mr-1 hidden items-center lg:flex"
+        >
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute top-1/2 -z-0 h-9 -translate-y-1/2 rounded-full border border-line-gold/40 bg-gold/10 transition-all duration-300 ease-out ${
+              indicator.visible ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ left: indicator.left, width: indicator.width }}
+          />
           {NAV_ITEMS.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`relative text-sm tracking-wide transition-colors hover:text-text-primary ${
-                  isActive(item.href) ? "text-gold" : "text-text-secondary"
-                }`}
-              >
-                {item.label}
-                {isActive(item.href) && (
-                  <span className="absolute -bottom-1.5 left-0 h-px w-full bg-line-gold" />
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-flex">
-            <Link href="/assessment" className="btn btn-primary">
-              Schedule Assessment
+            <Link
+              key={item.href}
+              href={item.href}
+              ref={(el) => {
+                linkRefs.current[item.href] = el;
+              }}
+              onMouseEnter={() => moveTo(linkRefs.current[item.href])}
+              className={`relative z-10 rounded-full px-4 py-2 text-sm tracking-wide transition-colors duration-200 ${
+                isActive(item.href)
+                  ? "text-gold"
+                  : "text-text-secondary hover:text-text-primary"
+              }`}
+            >
+              {item.label}
             </Link>
-          </span>
-          <button
-            type="button"
-            aria-label="Open menu"
-            aria-expanded={open}
-            onClick={() => setOpen(true)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-text-primary transition-colors hover:border-line-gold lg:hidden"
-          >
-            <Menu className="h-5 w-5" strokeWidth={1.5} />
-          </button>
+          ))}
         </div>
+
+        <span className="mx-1 hidden h-6 w-px bg-line lg:block" />
+
+        <span className="hidden sm:inline-flex">
+          <Link
+            href="/assessment"
+            className="btn btn-primary !px-5 !py-2.5 text-sm"
+          >
+            Schedule Assessment
+          </Link>
+        </span>
+
+        <button
+          type="button"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-text-primary transition-colors hover:border-line-gold lg:hidden"
+        >
+          <Menu className="h-5 w-5" strokeWidth={1.5} />
+        </button>
       </nav>
 
       {/* Mobile full-screen menu */}
