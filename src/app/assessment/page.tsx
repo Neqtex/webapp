@@ -5,6 +5,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import PageHeader from "@/components/layout/PageHeader";
+import JsonLd from "@/components/JsonLd";
 import { SITE } from "@/lib/constants";
 
 const INCLUDED = [
@@ -49,9 +50,20 @@ const FAQS = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
 export default function AssessmentPage() {
   return (
     <>
+      <JsonLd data={faqSchema} />
       <PageHeader
         eyebrow="Assessment"
         title={

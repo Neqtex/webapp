@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -21,6 +21,11 @@ const inter = Inter({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://neqtex.com";
+
+export const viewport: Viewport = {
+  themeColor: "#070807",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   title: {

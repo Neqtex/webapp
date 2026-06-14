@@ -10,6 +10,7 @@ import Container from "@/components/ui/Container";
 import PageHeader from "@/components/layout/PageHeader";
 import Button from "@/components/ui/Button";
 import CTASection from "@/components/home/CTASection";
+import JsonLd from "@/components/JsonLd";
 import { INDUSTRIES, PROCESS_STEPS, SITE } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -40,8 +41,41 @@ export default async function IndustryPage({
   const industry = INDUSTRIES.find((i) => i.slug === slug);
   if (!industry) notFound();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Industries",
+        item: `${SITE.url}/industries`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: industry.name,
+        item: `${SITE.url}/industries/${industry.slug}`,
+      },
+    ],
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Private AI for ${industry.name}`,
+    serviceType: "Private AI and intelligent automation",
+    description: industry.tagline,
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: industry.name,
+    url: `${SITE.url}/industries/${industry.slug}`,
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={serviceSchema} />
       <Container className="pt-24 sm:pt-28 lg:pt-32">
         <Link
           href="/industries"
