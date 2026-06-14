@@ -17,6 +17,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Private AI", href: "/private-ai" },
   { label: "SLMs", href: "/small-language-models" },
   { label: "Industries", href: "/industries" },
+  { label: "Research", href: "/research" },
   { label: "Process", href: "/how-it-works" },
   { label: "Contact", href: "/contact" },
 ];

@@ -11,6 +11,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
         { label: "Private AI", href: "/private-ai" },
         { label: "Small Language Models", href: "/small-language-models" },
         { label: "All Solutions", href: "/solutions" },
+        { label: "Research", href: "/research" },
         { label: "Process", href: "/how-it-works" },
       ],
     },
