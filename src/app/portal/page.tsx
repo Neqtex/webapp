@@ -9,7 +9,7 @@ const APP_URL = 'https://app.neqtex.com';
 const PROFESSIONAL_IMAGE =
   'https://images.unsplash.com/photo-1635315619556-5826839a1bea?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
-export default function ClientPage() {
+export default function PortalPage() {
   const [pin, setPin] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -103,11 +103,11 @@ export default function ClientPage() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="client-pin" className="mb-2 block text-xs uppercase tracking-[0.16em] text-text-muted">
+                  <label htmlFor="portal-pin" className="mb-2 block text-xs uppercase tracking-[0.16em] text-text-muted">
                     Access PIN
                   </label>
                   <input
-                    id="client-pin"
+                    id="portal-pin"
                     type="password"
                     inputMode="numeric"
                     autoComplete="off"

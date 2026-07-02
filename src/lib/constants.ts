@@ -238,6 +238,14 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: "Contact", href: "/contact" },
     ],
   },
+  {
+    id: "client",
+    label: "Client",
+    items: [
+      { label: "Portal", href: "/portal" },
+      { label: "Request Form", href: "/request-form" },
+    ],
+  },
 ];
 
 export const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((group) => group.items);

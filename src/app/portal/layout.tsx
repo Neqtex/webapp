@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ClientLayout({
+export default function PortalLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
