@@ -383,6 +383,9 @@ textarea.field {
     opacity: 1;
     transform: none;
   }
+  .glass-float:hover {
+    transform: none;
+  }
 }
 
 /* ---------------- Legacy compat (privacy/terms) ---------------- */
@@ -397,6 +400,73 @@ textarea.field {
   border: 1px solid var(--color-line);
   border-radius: 12px;
 }
+
+/* Floating liquid-glass panel */
+.glass-float {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.75rem;
+  padding: 1px;
+  background: linear-gradient(
+    145deg,
+    rgba(226, 201, 135, 0.55) 0%,
+    rgba(244, 240, 232, 0.14) 22%,
+    rgba(244, 240, 232, 0.05) 48%,
+    rgba(200, 169, 106, 0.22) 72%,
+    rgba(244, 240, 232, 0.18) 100%
+  );
+  box-shadow:
+    0 28px 90px -36px rgba(0, 0, 0, 0.92),
+    0 12px 40px -20px rgba(200, 169, 106, 0.18),
+    inset 0 1px 0 rgba(244, 240, 232, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  transform: translateY(0);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-float::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: calc(1.75rem - 1px);
+  background:
+    radial-gradient(120% 80% at 10% 0%, rgba(244, 240, 232, 0.14), transparent 55%),
+    radial-gradient(90% 70% at 90% 100%, rgba(200, 169, 106, 0.08), transparent 50%),
+    rgba(15, 17, 16, 0.52);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  pointer-events: none;
+}
+
+.glass-float__content {
+  position: relative;
+  z-index: 1;
+  margin: 0.85rem;
+  overflow: hidden;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(244, 240, 232, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 30px -18px rgba(0, 0, 0, 0.65);
+}
+
+@media (min-width: 640px) {
+  .glass-float__content {
+    margin: 1.1rem;
+    border-radius: 1.25rem;
+  }
+}
+
+.glass-float:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 34px 100px -34px rgba(0, 0, 0, 0.95),
+    0 16px 48px -18px rgba(200, 169, 106, 0.22),
+    inset 0 1px 0 rgba(244, 240, 232, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
 .btn-glass {
   display: inline-flex;
   align-items: center;
