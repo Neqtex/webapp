@@ -12,15 +12,11 @@ export interface NavItem {
   href: string;
 }
 
-export const NAV_ITEMS: NavItem[] = [
-  { label: "Solutions", href: "/solutions" },
-  { label: "Private AI", href: "/private-ai" },
-  { label: "SLMs", href: "/small-language-models" },
-  { label: "Industries", href: "/industries" },
-  { label: "Research", href: "/research" },
-  { label: "Process", href: "/how-it-works" },
-  { label: "Contact", href: "/contact" },
-];
+export interface NavGroup {
+  id: string;
+  label: string;
+  items: NavItem[];
+}
 
 export const TRUST_SIGNALS = [
   "Private AI Deployment",
@@ -210,6 +206,41 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
 ];
+
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    id: "solutions",
+    label: "Solutions",
+    items: [
+      { label: "All Solutions", href: "/solutions" },
+      { label: "Private AI", href: "/private-ai" },
+      { label: "Small Language Models", href: "/small-language-models" },
+      { label: "Research", href: "/research" },
+      { label: "Process", href: "/how-it-works" },
+    ],
+  },
+  {
+    id: "industries",
+    label: "Industries",
+    items: [
+      { label: "All Industries", href: "/industries" },
+      ...INDUSTRIES.map((industry) => ({
+        label: industry.name,
+        href: `/industries/${industry.slug}`,
+      })),
+    ],
+  },
+  {
+    id: "company",
+    label: "Company",
+    items: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+];
+
+export const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((group) => group.items);
 
 export interface ProcessStep {
   number: string;
