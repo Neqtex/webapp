@@ -6,7 +6,6 @@ import SystemDiagram from "./SystemDiagram";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden pb-20 pt-28 sm:pt-32 lg:pb-28 lg:pt-40">
-      {/* Localized hero glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_72%_18%,rgba(200,169,106,0.12),transparent_38%)]"
@@ -39,7 +38,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="animate-fade [animation-delay:200ms]">
+          <div className="w-full animate-fade [animation-delay:200ms] lg:justify-self-end">
             <SystemDiagram />
           </div>
         </div>
