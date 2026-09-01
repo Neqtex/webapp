@@ -1,5 +1,6 @@
 import Hero from "@/components/home/Hero";
 import TrustStrip from "@/components/home/TrustStrip";
+import StatementSection from "@/components/home/StatementSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import StickyShowcase from "@/components/home/StickyShowcase";
@@ -16,6 +17,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStrip />
+      <StatementSection />
       <ProblemSection />
       <ServicesSection />
       <StickyShowcase />
