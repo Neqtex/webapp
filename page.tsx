@@ -25,7 +25,8 @@ import {
   Star,
   Loader2,
   AlertCircle,
-  CheckCircle2
+  CheckCircle2,
+  type LucideIcon,
 } from 'lucide-react';
 
 const CALENDLY_URL = 'https://calendly.com/neqtexdev1/30min';
@@ -34,7 +35,7 @@ type PanelId = 'welcome' | 'assessment' | 'who' | 'process' | 'contact' | 'book'
 
 interface NavTile {
   id: PanelId;
-  icon: React.ElementType;
+  icon: LucideIcon;
   label: string;
 }
 
