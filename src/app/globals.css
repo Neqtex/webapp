@@ -160,6 +160,17 @@
   color: transparent;
 }
 
+.editorial-drop::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 4.6rem;
+  font-weight: 500;
+  line-height: 0.78;
+  padding-right: 0.12em;
+  padding-top: 0.08em;
+  color: var(--color-gold);
+}
+
 .hairline {
   height: 1px;
   width: 100%;
